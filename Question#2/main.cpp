@@ -13,10 +13,11 @@ class Library {
     char bookName[20];
     char authorName[20];
     char publisherName[20];
+    char studentName[20];
     int publishedYear;
     int copies;
     int issueDate;
-    int daysleft;
+    int currentDate;
     static int totalBooksLeft;
 public:
     Library();
@@ -30,16 +31,20 @@ public:
 int Library:: totalBooksLeft = 0.0;
 
 Library::Library()
-:publishedYear(0),copies(0),issueDate(0),daysleft(0){
+:publishedYear(0),copies(0),issueDate(0),currentDate(0){
     
 }
 
 void Library::getData() {
-    cout << "Enter book name "; cin >> bookName;
-    cout << "Enter author name "; cin >> authorName;
-    cout << "Enter publisher name: "; cin >> publisherName;
+    cout << "Enter book name ";  cin.getline(bookName, 20);
+    cout << "Enter author name "; cin.getline(authorName, 20);
+    cout << "Enter publisher name: "; cin.getline(publisherName, 20);
     cout << "Enter published year: "; cin >> publishedYear;
     cout << "Enter no. of copies: "; cin >>copies;
+    if (copies != 0)
+        totalBooksLeft += copies;
+    else
+        totalBooksLeft++;
 }
 
 void Library::putData() {
@@ -50,8 +55,24 @@ void Library::putData() {
     cout << "No. of copies: " << copies;
 }
 
+void Library::issueBook(){
+    totalBooksLeft--;
+    cout << "Enter srudent name:"; cin.getline(studentName, 20);
+    cout << "Enter issue date only date(00)"; cin >> issueDate;
+}
+
+void Library::remainingDays() {
+    cout << "Enter current date"; cin>>currentDate;
+    cout << "Total days remaining" << 7 - (currentDate-issueDate);
+}
+
+void Library::booksLeft() {
+    cout << "Total books left: " << totalBooksLeft;
+}
 
 int main(){
+    
+    
     
     return 0;
 }
