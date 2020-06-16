@@ -71,9 +71,9 @@ void Library::issueBook(){
 }
 
 void Library::remainingDays() {
-    cout << "Enter current date"; cin>>currentDate;
+    cout << "Enter current date: "; cin>>currentDate;
     cout << "Book issue by " << studentName << " at " << issueDate << endl;
-    cout << "Total days remaining " << 7 - (currentDate-issueDate) << endl;
+    cout << "Total days remaining: " << 7 - (currentDate-issueDate) << endl;
 }
 
 void Library::totalBookLeft() {
@@ -81,7 +81,7 @@ void Library::totalBookLeft() {
 }
 
 void Library::copiesLeft(){
-    cout << "Copies left" << copies << endl;
+    cout << "Copies left: " << copies << endl;
 }
 
 int main(){
