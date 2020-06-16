@@ -12,7 +12,17 @@ using namespace std;
 class Library {
     char bookName[20];
     char authorName[20];
-    
+    char publisherName[20];
+    int publishedYear;
+    int copies;
+    int issueDate;
+    int daysleft;
+    static int totalBooksLeft;
+public:
+    void issueBook();
+    void getData();
+    void booksLeft();
+    void remainingDays();
 };
 
 int main(){
