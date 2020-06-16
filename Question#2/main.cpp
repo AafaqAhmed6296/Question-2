@@ -34,10 +34,14 @@ int Library:: totalBooksLeft = 0.0;
 
 Library::Library()
 :publishedYear(0),copies(0),issueDate(0),currentDate(0){
-    
+    bookName[0] = 0;
+    authorName[0] = 0;
+    publisherName[0] = 0;
+    studentName[0] = 0;
 }
 
 void Library::getData() {
+    
     cout << "Enter book name ";  cin.getline(bookName, 20);
     cout << "Enter author name "; cin.getline(authorName, 20);
     cout << "Enter publisher name: "; cin.getline(publisherName, 20);
@@ -47,35 +51,37 @@ void Library::getData() {
         totalBooksLeft += copies;
     else
         totalBooksLeft++;
+    cin.clear();
+    cin.ignore(10000,'\n');
 }
 
 void Library::putData() {
-    cout << "Book Name: " << bookName;
-    cout << "Author name: " << authorName;
-    cout << "Publisher name: " << publisherName;
-    cout << "Published Year: " << publishedYear;
-    cout << "No. of copies: " << copies;
+    cout << "Book Name: " << bookName<< endl;
+    cout << "Author name: " << authorName << endl;
+    cout << "Publisher name: " << publisherName<<endl;
+    cout << "Published Year: " << publishedYear << endl;
+    cout << "No. of copies: " << copies << endl;
 }
 
 void Library::issueBook(){
     totalBooksLeft--;
     copies--;
-    cout << "Enter srudent name:"; cin.getline(studentName, 20);
-    cout << "Enter issue date only date(00)"; cin >> issueDate;
+    cout << "Enter srudent name: "; cin.getline(studentName, 20);
+    cout << "Enter issue date only date(00): "; cin >> issueDate;
 }
 
 void Library::remainingDays() {
     cout << "Enter current date"; cin>>currentDate;
-    cout << "Book issue by " << studentName << "at " << issueDate;
-    cout << "Total days remaining" << 7 - (currentDate-issueDate);
+    cout << "Book issue by " << studentName << " at " << issueDate << endl;
+    cout << "Total days remaining " << 7 - (currentDate-issueDate) << endl;
 }
 
 void Library::totalBookLeft() {
-    cout << "Total books left: " << totalBooksLeft;
+    cout << "Total books left: " << totalBooksLeft << endl;
 }
 
 void Library::copiesLeft(){
-    cout << "Copies left" << copies;
+    cout << "Copies left" << copies << endl;
 }
 
 int main(){
@@ -90,13 +96,16 @@ int main(){
     for (int i = 0 ; i < 10; i++) {
         lib[i].putData();
     }
-    
+    cout << setw(30) << setfill('-') << "" << setfill(' ') << endl;
     lib[0].issueBook();
     
+    cout << setw(30) << setfill('-') << "" << setfill(' ') << endl;
     lib[0].remainingDays();
     
+    cout << setw(30) << setfill('-') << "" << setfill(' ') << endl;
     lib[0].copiesLeft();
     
+    cout << setw(30) << setfill('-') << "" << setfill(' ') << endl;
     Library::totalBookLeft();
     
     return 0;
