@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 class Library {
@@ -24,8 +25,9 @@ public:
     void issueBook();
     void getData();
     void putData();
-    void booksLeft();
+    static void totalBookLeft();
     void remainingDays();
+    void copiesLeft();
 };
 
 int Library:: totalBooksLeft = 0.0;
@@ -57,22 +59,45 @@ void Library::putData() {
 
 void Library::issueBook(){
     totalBooksLeft--;
+    copies--;
     cout << "Enter srudent name:"; cin.getline(studentName, 20);
     cout << "Enter issue date only date(00)"; cin >> issueDate;
 }
 
 void Library::remainingDays() {
     cout << "Enter current date"; cin>>currentDate;
+    cout << "Book issue by " << studentName << "at " << issueDate;
     cout << "Total days remaining" << 7 - (currentDate-issueDate);
 }
 
-void Library::booksLeft() {
+void Library::totalBookLeft() {
     cout << "Total books left: " << totalBooksLeft;
+}
+
+void Library::copiesLeft(){
+    cout << "Copies left" << copies;
 }
 
 int main(){
     
+    Library lib[10];
     
+    for (int i = 0 ; i < 10; i++) {
+        lib[i].getData();
+    }
+    cout << setw(30) << setfill('-') << "" << setfill(' ') << endl;
+    
+    for (int i = 0 ; i < 10; i++) {
+        lib[i].putData();
+    }
+    
+    lib[0].issueBook();
+    
+    lib[0].remainingDays();
+    
+    lib[0].copiesLeft();
+    
+    Library::totalBookLeft();
     
     return 0;
 }
